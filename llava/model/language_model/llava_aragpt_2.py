@@ -2,7 +2,6 @@ from typing import List, Optional, Tuple, Union
 
 import torch
 import torch.nn as nn
-
 from transformers import AutoConfig, AutoModelForCausalLM, GPT2Config, GPT2Model, GPT2LMHeadModel
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from transformers.generation.utils import GenerateOutput
@@ -111,7 +110,7 @@ class LlavaAraGPT2ForCausalLM(GPT2LMHeadModel, LlavaMetaForCausalLM):
                 image_sizes=image_sizes
             )
         else:
-            inputs_embeds = self.get_model().wte(inputs)  # GPT2's token embedding layer
+            inputs_embeds = self.get_model().wte(inputs)
 
         return super().generate(
             position_ids=position_ids,
